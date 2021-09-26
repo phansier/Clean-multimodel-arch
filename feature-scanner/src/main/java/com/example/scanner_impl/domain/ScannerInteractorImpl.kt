@@ -15,6 +15,6 @@ internal class ScannerInteractorImpl @Inject constructor(private val mScannerRep
 
     private fun doSomeLogic(scannerModel: ScannerModel): Single<ScannerModel> {
         return Single.timer(3000, TimeUnit.MILLISECONDS)
-                .map { aLong: Long -> scannerModel }
+                .map { scannerModel }
     }
 }

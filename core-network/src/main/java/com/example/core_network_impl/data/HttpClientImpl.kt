@@ -8,6 +8,6 @@ import javax.inject.Inject
 internal class HttpClientImpl @Inject constructor() : HttpClient {
     override fun doAnyRequest(): Single<Any> {
         return Single.timer(300, TimeUnit.MILLISECONDS)
-                .map { aLong: Long? -> Any() }
+                .map { Any() }
     }
 }

@@ -32,9 +32,9 @@ internal class AntitheftMainFragment : MvpAppCompatFragment(), AntitheftMainView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_antitheft, null)
-        view.findViewById<View>(R.id.button_purchase).setOnClickListener { v: View? -> antitheftPresenter.clickToBuyWork() }
-        view.findViewById<View>(R.id.button_at).setOnClickListener { v: View? -> antitheftPresenter.clickToAtWork() }
-        view.findViewById<View>(R.id.button_help).setOnClickListener { v: View? -> antitheftPresenter.clickToHelp() }
+        view.findViewById<View>(R.id.button_purchase).setOnClickListener { antitheftPresenter.clickToBuyWork() }
+        view.findViewById<View>(R.id.button_at).setOnClickListener { antitheftPresenter.clickToAtWork() }
+        view.findViewById<View>(R.id.button_help).setOnClickListener { antitheftPresenter.clickToHelp() }
         return view
     }
 

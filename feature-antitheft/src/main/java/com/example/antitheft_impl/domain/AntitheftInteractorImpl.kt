@@ -15,6 +15,6 @@ internal class AntitheftInteractorImpl @Inject constructor(private val antitheft
 
     private fun doSomeLogic(antitheftModel: AntitheftModel): Single<AntitheftModel> {
         return Single.timer(3000, TimeUnit.MILLISECONDS)
-                .map { aLong: Long -> antitheftModel }
+                .map { antitheftModel }
     }
 }

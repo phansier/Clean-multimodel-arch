@@ -17,6 +17,6 @@ internal class ScannerRepositoryImpl @Inject constructor(
 ) : ScannerRepository {
     override fun doScannerLowLevelWork(): Single<ScannerModel> {
         return httpClient.doAnyRequest()
-                .map { o: Any -> ScannerModel() }
+                .map { ScannerModel() }
     }
 }

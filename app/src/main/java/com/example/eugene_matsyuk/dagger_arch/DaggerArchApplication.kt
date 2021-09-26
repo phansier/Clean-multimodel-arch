@@ -6,7 +6,7 @@ import com.example.eugene_matsyuk.dagger_arch.di.DiConstants
 import com.example.eugene_matsyuk.dagger_arch.di.app.AppComponent
 import com.example.eugene_matsyuk.dagger_arch.di.app.DaggerAppComponent
 import com.example.eugene_matsyuk.dagger_arch.routing.GlobalNavigator
-import ru.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 import javax.inject.Named
 

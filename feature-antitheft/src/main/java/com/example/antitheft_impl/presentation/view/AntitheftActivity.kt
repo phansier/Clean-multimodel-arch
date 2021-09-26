@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.antitheft_impl.di.AntitheftFeatureComponentHolder
 import com.example.antitheft_impl.routing.AntitheftRoutingScreens
 import com.example.antitheft_api.R
-import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
-import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import com.github.terrakok.cicerone.Navigator
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import javax.inject.Inject
 
 internal class AntitheftActivity : AppCompatActivity() {
@@ -22,10 +22,10 @@ internal class AntitheftActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AntitheftFeatureComponentHolder.getComponent().inject(this)
-        navigator = SupportAppNavigator(this, supportFragmentManager, R.id.details)
+        navigator = AppNavigator(this, R.id.details, supportFragmentManager)
         setContentView(R.layout.activity_antitheft)
         if (savedInstanceState == null) {
-            router.navigateTo(AntitheftRoutingScreens.ANTITHEFT_MAIN)
+            router.navigateTo(AntitheftRoutingScreens.getAntitheftMainScreen())
         }
     }
 

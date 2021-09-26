@@ -31,9 +31,9 @@ dependencies {
 
 
     implementation("androidx.appcompat:appcompat:${rootProject.extra["appcompat_version"]}")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.constraintlayout:constraintlayout:${rootProject.extra["constraint_version"]}")
     // cicerone
-    implementation("ru.terrakok.cicerone:cicerone:$cicerone")
+    implementation("com.github.terrakok:cicerone:$cicerone")
     // dagger
     compileOnly("javax.annotation:jsr250-api:1.0")
     implementation("com.google.dagger:dagger:$dagger")

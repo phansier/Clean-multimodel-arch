@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.scanner_api.R
 import com.example.scanner_impl.di.ScannerFeatureComponentHolder
-import com.example.scanner_impl.routing.ScannerRoutingScreens.SCANNER_MAIN
-import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
-import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import com.example.scanner_impl.routing.ScannerRoutingScreens.getScannerMainScreen
+import com.github.terrakok.cicerone.Navigator
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import javax.inject.Inject
 
 internal class ScannerActivity : AppCompatActivity() {
@@ -22,10 +22,10 @@ internal class ScannerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ScannerFeatureComponentHolder.getComponent().inject(this)
-        navigator = SupportAppNavigator(this, supportFragmentManager, R.id.details)
+        navigator = AppNavigator(this, R.id.details, supportFragmentManager)
         setContentView(R.layout.activity_scanner)
         if (savedInstanceState == null) {
-            router.navigateTo(SCANNER_MAIN)
+            router.navigateTo(getScannerMainScreen())
         }
     }
 

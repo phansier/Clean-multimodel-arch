@@ -36,7 +36,6 @@ dependencyResolutionManagement {
 
     repositories {
         google()
-        jcenter()//needed for Cicerone
         mavenCentral()
     }
 }

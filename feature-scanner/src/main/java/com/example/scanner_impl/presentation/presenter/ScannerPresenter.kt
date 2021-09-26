@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import com.example.purchase_api.domain.PurchaseInteractor
 import com.example.scanner_impl.domain.ScannerInteractor
 import com.example.scanner_impl.presentation.view.ScannerMainView
-import com.example.scanner_impl.routing.ScannerRoutingScreens.SCANNER_HELP
+import com.example.scanner_impl.routing.ScannerRoutingScreens.getScannerHelpScreen
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import moxy.MvpPresenter
-import ru.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.Router
 import javax.inject.Inject
 
 @InjectViewState
@@ -37,6 +37,6 @@ internal class ScannerPresenter @Inject constructor(private val scannerInteracto
     }
 
     fun clickToHelp() {
-        router.navigateTo(SCANNER_HELP)
+        router.navigateTo(getScannerHelpScreen())
     }
 }

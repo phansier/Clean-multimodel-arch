@@ -3,10 +3,10 @@ package com.example.eugene_matsyuk.dagger_arch.routing
 import android.content.Context
 import com.example.antitheft_api.AntitheftFeatureApi
 import com.example.scanner_api.ScannerFeatureApi
-import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.Screen
-import ru.terrakok.cicerone.commands.Command
-import ru.terrakok.cicerone.commands.Forward
+import com.github.terrakok.cicerone.Command
+import com.github.terrakok.cicerone.Forward
+import com.github.terrakok.cicerone.Navigator
+import com.github.terrakok.cicerone.Screen
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -17,12 +17,12 @@ class GlobalNavigator @Inject constructor(
         private val featureAntitheft: Provider<AntitheftFeatureApi>,
         private val context: Context
 ) : Navigator {
-    override fun applyCommands(commands: Array<Command>) {
+
+    override fun applyCommands(commands: Array<out Command>) {
         for (command in commands) {
             applyCommand(command)
         }
     }
-
     private fun applyCommand(command: Command) {
         if (command is Forward) {
             forward(command)
@@ -36,17 +36,17 @@ class GlobalNavigator @Inject constructor(
         startFeatureStartPoint(name)
     }
 
-    private fun startFeatureStartPoint(name: Screen) {
-        when (name) {
-            GlobalScreenNames.SCANNER_FEATURE -> {
+    private fun startFeatureStartPoint(screen: Screen) {
+        when (screen) {
+            GlobalScreenNames.ScannerFeatureScreen -> {
                 featureScanner.get().scannerStarter().start(context)
                 return
             }
-            GlobalScreenNames.AV_FEATURE -> {
+            GlobalScreenNames.AvFeatureScreen -> {
                 featureAntitheft.get().antitheftStarter().start(context)
                 return
             }
-            else -> throw RuntimeException("Unexpected screen: $name")
+            else -> throw RuntimeException("Unexpected screen: $screen")
         }
     }
 }

@@ -3,9 +3,9 @@ package com.example.scanner_impl.di
 import com.example.core.di.general.PerFeature
 import dagger.Module
 import dagger.Provides
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
 
 @Module
 class ScreenNavigationModule {
@@ -20,7 +20,7 @@ class ScreenNavigationModule {
     @PerFeature
     @Provides
     fun provideNavigatorHolder(): NavigatorHolder {
-        return cicerone.navigatorHolder
+        return cicerone.getNavigatorHolder()
     }
 
 }

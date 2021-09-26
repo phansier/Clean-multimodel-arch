@@ -14,7 +14,7 @@ dependencies {
     implementation(project(":feature-purchase-api"))
 
     implementation("androidx.appcompat:appcompat:${rootProject.extra["appcompat_version"]}")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.constraintlayout:constraintlayout:${rootProject.extra["constraint_version"]}")
     // RxJava
     val rxJava = rootProject.extra["rxJava_version"]
     val rxAndroid = rootProject.extra["rxAndroid_version"]

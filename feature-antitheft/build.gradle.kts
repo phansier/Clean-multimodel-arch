@@ -30,5 +30,5 @@ dependencies {
     kapt("com.github.moxy-community:moxy-compiler:$moxy")
     // cicerone
     val cicerone = rootProject.extra["cicerone_version"]
-    implementation("ru.terrakok.cicerone:cicerone:$cicerone")
+    implementation("com.github.terrakok:cicerone:$cicerone")
 }

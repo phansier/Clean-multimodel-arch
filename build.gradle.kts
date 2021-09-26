@@ -5,8 +5,9 @@ buildscript {
     val dagger_version by extra("2.38.1")
     val rxJava_version by extra("2.2.19")
     val rxAndroid_version by extra("2.1.1")
-    val cicerone_version by extra("5.1.1")//needs JCenter
+    val cicerone_version by extra("7.1")
     val appcompat_version by extra("1.3.1")
+    val constraint_version by extra("2.1.0")
 }
 
 allprojects {

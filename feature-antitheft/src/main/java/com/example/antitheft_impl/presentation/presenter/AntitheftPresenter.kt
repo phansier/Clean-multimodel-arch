@@ -9,7 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import moxy.MvpPresenter
-import ru.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.Router
 import javax.inject.Inject
 
 @InjectViewState
@@ -37,6 +37,6 @@ internal class AntitheftPresenter @Inject constructor(private val antitheftInter
     }
 
     fun clickToHelp() {
-        router.navigateTo(AntitheftRoutingScreens.ANTITHEFT_HELP)
+        router.navigateTo(AntitheftRoutingScreens.getAntitheftHelpScreen())
     }
 }

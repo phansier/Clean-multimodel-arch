@@ -7,6 +7,7 @@ buildscript {
     val rxAndroid_version by extra("2.1.1")
     val cicerone_version by extra("7.1")
     val appcompat_version by extra("1.3.1")
+    val material_version by extra("1.4.0")
     val constraint_version by extra("2.1.0")
 }
 

@@ -31,6 +31,7 @@ dependencies {
 
 
     implementation("androidx.appcompat:appcompat:${rootProject.extra["appcompat_version"]}")
+    implementation("com.google.android.material:material:${rootProject.extra["material_version"]}")
     implementation("androidx.constraintlayout:constraintlayout:${rootProject.extra["constraint_version"]}")
     // cicerone
     implementation("com.github.terrakok:cicerone:$cicerone")

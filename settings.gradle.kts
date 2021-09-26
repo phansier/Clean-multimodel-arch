@@ -15,8 +15,8 @@ pluginManagement {
 
     repositories {
         google()
-        jcenter()
-        maven("https://dl.bintray.com/kotlin/kotlin-dev/")//for kapt plugin 1.4.30
+        mavenCentral()
+        maven("https://plugins.gradle.org/m2/")//for kapt plugin 1.5.30
     }
 
     resolutionStrategy {
@@ -24,9 +24,9 @@ pluginManagement {
             val pluginId = requested.id.id
 
             if (pluginId.startsWith("org.jetbrains.kotlin")) {
-                useVersion("1.4.30")
+                useVersion("1.5.30")
             } else if (pluginId.startsWith("com.android.")) {
-                useModule("com.android.tools.build:gradle:4.1.2")
+                useModule("com.android.tools.build:gradle:7.0.2")
             }
         }
     }
@@ -36,6 +36,7 @@ dependencyResolutionManagement {
 
     repositories {
         google()
-        jcenter()
+        jcenter()//needed for Cicerone
+        mavenCentral()
     }
 }

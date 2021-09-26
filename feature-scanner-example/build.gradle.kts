@@ -13,7 +13,7 @@ dependencies {
     implementation(project(":feature-scanner"))
     implementation(project(":feature-purchase-api"))
 
-    implementation("androidx.appcompat:appcompat:1.3.0-rc01")
+    implementation("androidx.appcompat:appcompat:${rootProject.extra["appcompat_version"]}")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     // RxJava
     val rxJava = rootProject.extra["rxJava_version"]

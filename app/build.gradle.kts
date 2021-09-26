@@ -1,6 +1,6 @@
 plugins {
     id("android-application-convention")
-    kotlin("kapt")
+    id("kotlin-kapt-convention")
 }
 
 android {
@@ -11,39 +11,28 @@ android {
 }
 
 dependencies {
-    implementation(project(":module-injector"))
+    implementation(projects.moduleInjector)
 
-    implementation(project(":core-utils"))
-    implementation(project(":core-db"))
-    implementation(project(":core-network"))
+    implementation(projects.coreUtils)
+    implementation(projects.coreDb)
+    implementation(projects.coreNetwork)
 
-    implementation(project(":feature-scanner"))
-    implementation(project(":feature-antitheft"))
-    implementation(project(":feature-purchase-impl"))
-    implementation(project(":feature-purchase-api"))
+    implementation(projects.featureScanner)
+    implementation(projects.featureAntitheft)
+    implementation(projects.featurePurchaseImpl)
+    implementation(projects.featurePurchaseApi)
 
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraint)
+    implementation(libs.material)
 
-    val cicerone = rootProject.extra["cicerone_version"]
-    val dagger = rootProject.extra["dagger_version"]
-    val moxy = rootProject.extra["moxy_version"]
-    val rxJava = rootProject.extra["rxJava_version"]
-    val rxAndroid = rootProject.extra["rxAndroid_version"]
+    implementation(libs.cicerone)
 
+    implementation(libs.dagger)
 
-    implementation("androidx.appcompat:appcompat:${rootProject.extra["appcompat_version"]}")
-    implementation("com.google.android.material:material:${rootProject.extra["material_version"]}")
-    implementation("androidx.constraintlayout:constraintlayout:${rootProject.extra["constraint_version"]}")
-    // cicerone
-    implementation("com.github.terrakok:cicerone:$cicerone")
-    // dagger
-    compileOnly("javax.annotation:jsr250-api:1.0")
-    implementation("com.google.dagger:dagger:$dagger")
-    kapt("com.google.dagger:dagger-compiler:$dagger")
-    // moxy
-    implementation("com.github.moxy-community:moxy:$moxy")
-    implementation("com.github.moxy-community:moxy-androidx:$moxy")
-    kapt("com.github.moxy-community:moxy-compiler:$moxy")
-    // RxJava
-    implementation("io.reactivex.rxjava2:rxjava:$rxJava")
-    implementation("io.reactivex.rxjava2:rxandroid:$rxAndroid")
+    implementation(libs.moxy)
+    implementation(libs.moxyAndroid)
+
+    implementation(libs.rxJava)
+    implementation(libs.rxAndroid)
 }

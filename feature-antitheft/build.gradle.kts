@@ -1,34 +1,25 @@
 plugins {
     id("android-library-convention")
-    kotlin("kapt")
+    id("kotlin-kapt-convention")
 }
 
 dependencies {
-    implementation(project(":module-injector"))
+    implementation(projects.moduleInjector)
 
-    implementation(project(":core-utils"))
-    implementation(project(":core-db"))
-    implementation(project(":core-network"))
+    implementation(projects.coreUtils)
+    implementation(projects.coreDb)
+    implementation(projects.coreNetwork)
 
-    implementation(project(":feature-purchase-api"))
+    implementation(projects.featurePurchaseApi)
 
-    implementation("androidx.appcompat:appcompat:${rootProject.extra["appcompat_version"]}")
-    // dagger
-    val dagger = rootProject.extra["dagger_version"]
-    compileOnly("javax.annotation:jsr250-api:1.0")
-    implementation("com.google.dagger:dagger:$dagger")
-    kapt("com.google.dagger:dagger-compiler:$dagger")
-    // RxJava
-    val rxJava = rootProject.extra["rxJava_version"]
-    val rxAndroid = rootProject.extra["rxAndroid_version"]
-    implementation("io.reactivex.rxjava2:rxjava:$rxJava")
-    implementation("io.reactivex.rxjava2:rxandroid:$rxAndroid")
-    // moxy
-    val moxy = rootProject.extra["moxy_version"]
-    implementation("com.github.moxy-community:moxy:$moxy")
-    implementation("com.github.moxy-community:moxy-androidx:$moxy")
-    kapt("com.github.moxy-community:moxy-compiler:$moxy")
-    // cicerone
-    val cicerone = rootProject.extra["cicerone_version"]
-    implementation("com.github.terrakok:cicerone:$cicerone")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.dagger)
+
+    implementation(libs.rxJava)
+    implementation(libs.rxAndroid)
+
+    implementation(libs.moxy)
+    implementation(libs.moxyAndroid)
+
+    implementation(libs.cicerone)
 }

@@ -2,12 +2,14 @@ plugins {
     `kotlin-dsl`
 }
 
-repositories {
-    jcenter()
-    google()
-}
-
 dependencies {
-    implementation("com.android.tools.build:gradle:4.1.2")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
+
+    /**
+     * workaround to make version catalog accessible in convention plugins
+     * https://github.com/gradle/gradle/issues/15383
+     */
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+
+    implementation(libs.androidGradle)
+    implementation(libs.kotlinGradle)
 }

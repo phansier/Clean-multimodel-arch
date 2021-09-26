@@ -1,0 +1,33 @@
+[versions]
+kotlin = "1.5.30"
+agp = "7.0.2"
+dagger = "2.38.1"
+moxy = "2.2.2"
+rx = "2.2.21"
+rxAndroidVersion = "2.1.1"
+cicerone = "7.1"
+appcompat = "1.3.1"
+material = "1.4.0"
+constraint = "2.1.0"
+
+[libraries]
+kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+androidGradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+
+daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+moxyCompiler = { module = "com.github.moxy-community:moxy-compiler", version.ref = "moxy" }
+
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+
+rxJava = {module = "io.reactivex.rxjava2:rxjava", version.ref = "rx"}
+rxAndroid = {module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxAndroidVersion"}
+
+moxy = { module = "com.github.moxy-community:moxy", version.ref = "moxy" }
+moxyAndroid = { module = "com.github.moxy-community:moxy-androidx", version.ref = "moxy" }
+
+cicerone = { module = "com.github.terrakok:cicerone", version.ref = "cicerone" }
+
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-constraint = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraint" }
+
+material = { module = "com.google.android.material:material", version.ref = "material" }

@@ -6,7 +6,7 @@ configure<BaseExtension> {
 
     defaultConfig {
 
-        setMinSdkVersion(rootProject.extra["minSdkVersion"] as Int)
+        minSdk = rootProject.extra["minSdkVersion"] as Int
         setTargetSdkVersion(rootProject.extra["compileSdkVersion"] as Int)
         versionCode = 1
         versionName = "1.0"

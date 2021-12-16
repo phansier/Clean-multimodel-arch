@@ -7,9 +7,9 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @PerFeature
-internal class ScannerInteractorImpl @Inject constructor(private val mScannerRepository: ScannerRepository) : ScannerInteractor {
+internal class ScannerInteractorImpl @Inject constructor(private val scannerRepository: ScannerRepository) : ScannerInteractor {
     override fun doScannerWork(): Single<ScannerModel> {
-        return mScannerRepository.doScannerLowLevelWork()
+        return scannerRepository.doScannerLowLevelWork()
                 .flatMap { scannerModel: ScannerModel -> doSomeLogic(scannerModel) }
     }
 

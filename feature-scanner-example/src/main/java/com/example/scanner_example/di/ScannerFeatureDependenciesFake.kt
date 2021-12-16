@@ -1,6 +1,6 @@
 package com.example.scanner_example.di
 
-import com.example.core.di.app.CoreUtilsComponent.Companion.get
+import com.example.core.di.app.CoreUtilsComponent
 import com.example.core.utils.SomeUtils
 import com.example.core_db_api.data.DbClient
 import com.example.core_network_api.data.HttpClient
@@ -20,7 +20,7 @@ class ScannerFeatureDependenciesFake : ScannerFeatureDependencies {
     }
 
     override fun someUtils(): SomeUtils {
-        return get().someUtils()
+        return CoreUtilsComponent.get().someUtils()
     }
 
     override fun purchaseInteractor(): PurchaseInteractor {

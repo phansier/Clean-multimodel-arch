@@ -6,8 +6,8 @@ plugins {
 android {
     defaultConfig {
         applicationId = "com.example.eugene_matsyuk.dagger_arch"
-
     }
+    namespace = "com.example.eugene_matsyuk.dagger_arch"
 }
 
 dependencies {

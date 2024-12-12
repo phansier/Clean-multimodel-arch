@@ -1,4 +1,4 @@
-enableFeaturePreview("VERSION_CATALOGS")
+rootProject.name = "build-logic"
 
 @Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
@@ -12,5 +12,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
+include("checks")
+include("gradle-ext")

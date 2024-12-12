@@ -12,3 +12,7 @@ dependencies {
 
     implementation(libs.rxJava)
 }
+
+android {
+    namespace = "com.example.core_network_api"
+}

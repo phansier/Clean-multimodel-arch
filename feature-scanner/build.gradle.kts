@@ -23,3 +23,8 @@ dependencies {
 
     implementation(libs.cicerone)
 }
+
+android {
+    namespace = "com.example.scanner_api"
+
+}

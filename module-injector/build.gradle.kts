@@ -4,3 +4,7 @@ plugins {
 
 dependencies {
 }
+
+android {
+    namespace = "com.example.module_injector"
+}

@@ -26,3 +26,7 @@ dependencies {
     implementation(libs.moxy)
     implementation(libs.moxyAndroid)
 }
+
+android {
+    namespace = "com.example.scanner_example"
+}

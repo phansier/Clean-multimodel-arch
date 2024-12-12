@@ -1,6 +1,6 @@
 [versions]
-kotlin = "1.5.30"
-agp = "7.0.2"
+kotlin = "2.1.0"
+agp = "8.7.3"
 dagger = "2.38.1"
 moxy = "2.2.2"
 rx = "2.2.21"
@@ -12,6 +12,7 @@ constraint = "2.1.0"
 
 [libraries]
 kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kaptGradle = { module = "org.jetbrains.kotlin.kapt:org.jetbrains.kotlin.kapt.gradle.plugin", version.ref = "kotlin" }
 androidGradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 
 daggerCompiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }

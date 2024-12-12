@@ -9,3 +9,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.dagger)
 }
+
+android {
+    namespace = "com.example.core_db_api"
+}

@@ -3,6 +3,14 @@ allprojects {
     val compileSdkVersion by extra(30)
 }
 
-task<Delete>("clean") {
-    delete(rootProject.buildDir)
+buildscript {
+    repositories {
+        google()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath(libs.androidGradle)
+        classpath(libs.kotlinGradle)
+        classpath(libs.kaptGradle)
+    }
 }

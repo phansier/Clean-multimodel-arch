@@ -12,3 +12,7 @@ dependencies {
     implementation(libs.rxJava)
     implementation(libs.rxAndroid)
 }
+
+android {
+    namespace = "com.example.core"
+}

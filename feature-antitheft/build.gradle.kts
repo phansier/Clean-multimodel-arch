@@ -23,3 +23,7 @@ dependencies {
 
     implementation(libs.cicerone)
 }
+
+android {
+    namespace = "com.example.antitheft_api"
+}

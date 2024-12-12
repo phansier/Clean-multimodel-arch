@@ -1,5 +1,5 @@
-enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+rootProject.name = "Clean-multimodel-arch"
 
 includeBuild("build-logic")
 

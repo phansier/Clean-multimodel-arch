@@ -4,19 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.antitheft_impl.routing.AntitheftMainScreen
 import com.example.eugene_matsyuk.dagger_arch.R
 import com.example.eugene_matsyuk.dagger_arch.di.app.AppComponent
-import com.example.eugene_matsyuk.dagger_arch.di.app.AppComponent.Companion.get
-import com.example.eugene_matsyuk.dagger_arch.presentation.main.presenter.MainPresenter
 import com.example.eugene_matsyuk.dagger_arch.routing.GlobalNavigator
 import com.example.scanner_impl.routing.ScannerMainScreen
-import moxy.MvpAppCompatFragment
-import moxy.presenter.InjectPresenter
-import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
 class MainActivity : FragmentActivity() {
@@ -36,29 +46,61 @@ class MainActivity : FragmentActivity() {
     }
 }
 
-class HomeFragment : MvpAppCompatFragment(), MainView {
-    @InjectPresenter
-    lateinit var mainPresenter: MainPresenter
-
-    @ProvidePresenter
-    fun provideMainPresenter(): MainPresenter {
-        return get()
-            .mainScreenComponent()
-            .mainPresenter()
-    }
+class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        view.findViewById<View>(R.id.button_scanner).setOnClickListener {
-            findNavController().navigate(ScannerMainScreen)
+    ): View = ComposeView(requireContext()).apply {
+        setViewCompositionStrategy(DisposeOnViewTreeLifecycleDestroyed)
+        setContent {
+            HomeContent(
+                onScannerClick = { findNavController().navigate(ScannerMainScreen) },
+                onAntitheftClick = { findNavController().navigate(AntitheftMainScreen) }
+            )
         }
-        view.findViewById<View>(R.id.button_at).setOnClickListener {
-            findNavController().navigate(AntitheftMainScreen)
+    }
+}
+
+@Preview
+@Composable
+fun HomeContent(
+    onScannerClick: () -> Unit = {},
+    onAntitheftClick: () -> Unit = {}
+) {
+    MaterialTheme {
+        Scaffold { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+
+            ) {
+                Text(
+                    text = "Main Screen",
+                    style = MaterialTheme.typography.headlineLarge,
+                    modifier = Modifier
+                        .align(alignment = CenterHorizontally)
+                        .padding(16.dp)
+                )
+                Button(
+                    onClick = onScannerClick,
+                    modifier = Modifier
+                        .align(alignment = CenterHorizontally)
+                        .padding(16.dp)
+                ) {
+                    Text("Go to scanner")
+                }
+                Button(
+                    onClick = onAntitheftClick,
+                    modifier = Modifier
+                        .align(alignment = CenterHorizontally)
+                        .padding(16.dp)
+                ) {
+                    Text("Go to antitheft")
+                }
+            }
         }
-        return view
     }
 }

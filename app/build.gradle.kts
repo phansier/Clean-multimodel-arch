@@ -1,6 +1,7 @@
 plugins {
     id("android-application-convention")
     id("kotlin-kapt-convention")
+    id("android-compose-convention")
     id("org.jetbrains.kotlin.plugin.serialization")
 }
 
@@ -31,9 +32,6 @@ dependencies {
     implementation(libs.kotlin.serialization.json)
 
     implementation(libs.dagger)
-
-    implementation(libs.moxy)
-    implementation(libs.moxyAndroid)
 
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)

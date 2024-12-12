@@ -9,7 +9,7 @@ class ScannerExampleApplication : Application() {
         super.onCreate()
         // component
         ScannerFeatureComponentHolder.init(
-                ScannerFeatureDependenciesFake()
+            ScannerFeatureDependenciesFake()
         )
     }
 }

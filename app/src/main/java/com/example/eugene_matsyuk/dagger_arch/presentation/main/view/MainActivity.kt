@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import com.example.antitheft_api.AtFeatureScreen
+import com.example.antitheft_impl.routing.AntitheftMainScreen
 import com.example.eugene_matsyuk.dagger_arch.R
 import com.example.eugene_matsyuk.dagger_arch.di.app.AppComponent
 import com.example.eugene_matsyuk.dagger_arch.di.app.AppComponent.Companion.get
 import com.example.eugene_matsyuk.dagger_arch.presentation.main.presenter.MainPresenter
 import com.example.eugene_matsyuk.dagger_arch.routing.GlobalNavigator
-import com.example.scanner_api.ScannerFeatureScreen
+import com.example.scanner_impl.routing.ScannerMainScreen
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -28,7 +28,8 @@ class MainActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         AppComponent.get().inject(this)
         setContentView(R.layout.activity_main)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
 
         navController.graph = globalNavigator.createGraph(navController)
@@ -51,9 +52,13 @@ class HomeFragment : MvpAppCompatFragment(), MainView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_home, container, false)
-        view.findViewById<View>(R.id.button_scanner).setOnClickListener { findNavController().navigate(ScannerFeatureScreen) }
-        view.findViewById<View>(R.id.button_at).setOnClickListener { findNavController().navigate(AtFeatureScreen) }
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        view.findViewById<View>(R.id.button_scanner).setOnClickListener {
+            findNavController().navigate(ScannerMainScreen)
+        }
+        view.findViewById<View>(R.id.button_at).setOnClickListener {
+            findNavController().navigate(AntitheftMainScreen)
+        }
         return view
     }
 }

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import com.example.purchase_api.domain.PurchaseInteractor
 import com.example.scanner_impl.domain.ScannerInteractor
 import com.example.scanner_impl.presentation.view.ScannerMainView
-import com.example.scanner_impl.routing.ScannerScreenNames
+import com.example.scanner_impl.routing.ScannerHelpScreen
 import moxy.InjectViewState
 import moxy.MvpPresenter
 
@@ -37,6 +37,6 @@ internal class ScannerPresenter
     }
 
     fun clickToHelp() {
-        viewState.navigate(ScannerScreenNames.ScannerHelpScreen)
+        viewState.navigate(ScannerHelpScreen)
     }
 }

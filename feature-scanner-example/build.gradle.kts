@@ -25,6 +25,8 @@ dependencies {
 
     implementation(libs.moxy)
     implementation(libs.moxyAndroid)
+
+    implementation(libs.navigation)
 }
 
 android {

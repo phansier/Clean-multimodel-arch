@@ -20,8 +20,8 @@ class GlobalNavigator @Inject constructor(
     fun createGraph(navController: NavController) = navController.createGraph(
         startDestination = HomeScreen
     ) {
-        featureScanner.get().scannerStarter().invoke(this)
-        featureAntitheft.get().antitheftStarter().invoke(this)
+        featureScanner.get().scannerStarter(this)
+        featureAntitheft.get().antitheftStarter(this)
         fragment<HomeFragment, HomeScreen>()
     }
 }

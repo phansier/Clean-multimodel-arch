@@ -1,12 +1,10 @@
 package com.example.antitheft_impl.di
 
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.activity
-import com.example.antitheft_impl.presentation.view.AntitheftActivity
-import com.example.antitheft_impl.presentation.view.AntitheftMainFragment
-import com.example.core.di.general.PerFeature
 import com.example.antitheft_api.AntitheftFeatureApi
-import com.example.antitheft_api.AtFeatureScreen
+import com.example.antitheft_impl.presentation.view.AntitheftMainFragment
+import com.example.antitheft_impl.routing.createGraph
+import com.example.core.di.general.PerFeature
 import dagger.Component
 
 @Component(
@@ -16,13 +14,10 @@ import dagger.Component
 @PerFeature
 internal abstract class AntitheftFeatureComponent : AntitheftFeatureApi {
 
-    internal abstract fun inject(antitheftActivity: AntitheftActivity)
     internal abstract fun inject(antitheftMainFragment: AntitheftMainFragment)
 
-    override fun antitheftStarter(): (NavGraphBuilder) -> Unit = { navGraphBuilder ->
-        navGraphBuilder.activity<AtFeatureScreen> {
-            this.activityClass = AntitheftActivity::class
-        }
+    override fun antitheftStarter(ngb: NavGraphBuilder) {
+        ngb.createGraph()
     }
 
     companion object {

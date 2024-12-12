@@ -3,7 +3,7 @@ package com.example.antitheft_impl.presentation.presenter
 import android.annotation.SuppressLint
 import com.example.antitheft_impl.domain.AntitheftInteractor
 import com.example.antitheft_impl.presentation.view.AntitheftMainView
-import com.example.antitheft_impl.routing.AntitheftScreenNames
+import com.example.antitheft_impl.routing.AntitheftHelpScreen
 import com.example.purchase_api.domain.PurchaseInteractor
 import moxy.InjectViewState
 import moxy.MvpPresenter
@@ -37,6 +37,6 @@ internal class AntitheftPresenter
     }
 
     fun clickToHelp() {
-        viewState.navigate(AntitheftScreenNames.AntitheftHelpScreen)
+        viewState.navigate(AntitheftHelpScreen)
     }
 }

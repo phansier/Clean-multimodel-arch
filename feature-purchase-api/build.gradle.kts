@@ -5,8 +5,8 @@ plugins {
 dependencies {
     implementation(projects.moduleInjector)
 
-    implementation(libs.rxJava)
-    implementation(libs.rxAndroid)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
 }
 android {
     namespace = "com.example.purchase_api"

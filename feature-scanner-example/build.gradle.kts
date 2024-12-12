@@ -18,8 +18,8 @@ dependencies {
 
     implementation(libs.material)
 
-    implementation(libs.rxJava)
-    implementation(libs.rxAndroid)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
 
     implementation(libs.dagger)
 

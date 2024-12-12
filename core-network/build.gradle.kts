@@ -10,7 +10,7 @@ dependencies {
 
     implementation(libs.dagger)
 
-    implementation(libs.rxJava)
+    implementation(libs.coroutines.core)
 }
 
 android {

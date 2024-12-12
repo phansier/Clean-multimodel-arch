@@ -2,19 +2,20 @@ package com.example.scanner_impl.domain
 
 import com.example.core.di.general.PerFeature
 import com.example.scanner_impl.domain.models.ScannerModel
-import io.reactivex.Single
-import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.delay
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.milliseconds
 
 @PerFeature
-internal class ScannerInteractorImpl @Inject constructor(private val scannerRepository: ScannerRepository) : ScannerInteractor {
-    override fun doScannerWork(): Single<ScannerModel> {
-        return scannerRepository.doScannerLowLevelWork()
-                .flatMap { scannerModel: ScannerModel -> doSomeLogic(scannerModel) }
+internal class ScannerInteractorImpl @Inject constructor(private val scannerRepository: ScannerRepository) :
+    ScannerInteractor {
+    override suspend fun doScannerWork(): ScannerModel {
+        val scannerModel = scannerRepository.doScannerLowLevelWork()
+        return doSomeLogic(scannerModel)
     }
 
-    private fun doSomeLogic(scannerModel: ScannerModel): Single<ScannerModel> {
-        return Single.timer(3000, TimeUnit.MILLISECONDS)
-                .map { scannerModel }
+    private suspend fun doSomeLogic(scannerModel: ScannerModel): ScannerModel {
+        delay(3000.milliseconds)
+        return scannerModel
     }
 }

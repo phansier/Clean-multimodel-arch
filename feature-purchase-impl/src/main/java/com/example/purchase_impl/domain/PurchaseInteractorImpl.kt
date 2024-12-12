@@ -3,19 +3,20 @@ package com.example.purchase_impl.domain
 import com.example.core.di.general.PerFeature
 import com.example.purchase_api.domain.PurchaseInteractor
 import com.example.purchase_api.domain.models.PurchaseModel
-import io.reactivex.Single
-import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.delay
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.milliseconds
 
 @PerFeature
-internal class PurchaseInteractorImpl @Inject constructor(private val purchaseRepository: PurchaseRepository) : PurchaseInteractor {
-    override fun makePurchase(): Single<PurchaseModel> {
-        return purchaseRepository.makePurchaseInStore()
-                .flatMap { purchaseModel: PurchaseModel -> doSomeLogic(purchaseModel) }
+internal class PurchaseInteractorImpl
+@Inject constructor(private val purchaseRepository: PurchaseRepository) : PurchaseInteractor {
+    override suspend fun makePurchase(): PurchaseModel {
+        val purchaseModel = purchaseRepository.makePurchaseInStore()
+        return doSomeLogic(purchaseModel)
     }
 
-    private fun doSomeLogic(purchaseModel: PurchaseModel): Single<PurchaseModel> {
-        return Single.timer(3000, TimeUnit.MILLISECONDS)
-                .map { purchaseModel }
+    private suspend fun doSomeLogic(purchaseModel: PurchaseModel): PurchaseModel {
+        delay(300.milliseconds)
+        return purchaseModel
     }
 }

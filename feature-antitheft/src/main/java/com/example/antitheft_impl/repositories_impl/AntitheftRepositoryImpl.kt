@@ -5,16 +5,16 @@ import com.example.antitheft_impl.domain.models.AntitheftModel
 import com.example.core.di.general.PerFeature
 import com.example.core_db_api.data.DbClient
 import com.example.core_network_api.data.HttpClient
-import io.reactivex.Single
+
 import javax.inject.Inject
 
 @PerFeature
 internal class AntitheftRepositoryImpl @Inject constructor(
-        private val httpClient: HttpClient,
-        private val dbClient: DbClient
+    private val httpClient: HttpClient,
+    private val dbClient: DbClient
 ) : AntitheftRepository {
-    override fun doAntitheftLowLevelWork(): Single<AntitheftModel> {
-        return httpClient.doAnyRequest()
-                .map { AntitheftModel() }
+    override suspend fun doAntitheftLowLevelWork(): AntitheftModel {
+        httpClient.doAnyRequest()
+        return AntitheftModel()
     }
 }

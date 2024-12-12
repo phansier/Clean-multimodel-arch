@@ -1,13 +1,13 @@
 package com.example.core_network_impl.data
 
 import com.example.core_network_api.data.HttpClient
-import io.reactivex.Single
-import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.delay
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.milliseconds
 
 internal class HttpClientImpl @Inject constructor() : HttpClient {
-    override fun doAnyRequest(): Single<Any> {
-        return Single.timer(300, TimeUnit.MILLISECONDS)
-                .map { Any() }
+    override suspend fun doAnyRequest(): Any {
+        delay(300.milliseconds)
+        return Any()
     }
 }

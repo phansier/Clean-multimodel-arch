@@ -33,6 +33,6 @@ dependencies {
     implementation(libs.moxy)
     implementation(libs.moxyAndroid)
 
-    implementation(libs.rxJava)
-    implementation(libs.rxAndroid)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
 }

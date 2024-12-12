@@ -5,11 +5,11 @@ import com.example.antitheft_impl.domain.AntitheftInteractor
 import com.example.antitheft_impl.presentation.view.AntitheftMainView
 import com.example.antitheft_impl.routing.AntitheftRoutingScreens
 import com.example.purchase_api.domain.PurchaseInteractor
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import moxy.MvpPresenter
 import com.github.terrakok.cicerone.Router
+import kotlinx.coroutines.launch
+import moxy.presenterScope
 import javax.inject.Inject
 
 @InjectViewState
@@ -18,22 +18,20 @@ internal class AntitheftPresenter @Inject constructor(private val antitheftInter
                                                       private val router: Router) : MvpPresenter<AntitheftMainView>() {
     @SuppressLint("CheckResult")
     fun clickToAtWork() {
-        antitheftInteractor.doAntitheftWork()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { viewState.showAtWork() }
-                .doOnSuccess { viewState.showAtSuccess() }
-                .subscribe({ }, { })
+        presenterScope.launch {
+            viewState.showAtWork()
+            antitheftInteractor.doAntitheftWork()
+            viewState.showAtSuccess()
+        }
     }
 
     @SuppressLint("CheckResult")
     fun clickToBuyWork() {
-        purchaseInteractor.makePurchase()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { viewState.showBuyWork() }
-                .doOnSuccess { viewState.showBuySuccess() }
-                .subscribe({ }) { }
+        presenterScope.launch {
+            viewState.showBuyWork()
+            purchaseInteractor.makePurchase()
+            viewState.showBuySuccess()
+        }
     }
 
     fun clickToHelp() {

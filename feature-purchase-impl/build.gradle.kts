@@ -14,8 +14,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.dagger)
 
-    implementation(libs.rxJava)
-    implementation(libs.rxAndroid)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
 }
 
 android {

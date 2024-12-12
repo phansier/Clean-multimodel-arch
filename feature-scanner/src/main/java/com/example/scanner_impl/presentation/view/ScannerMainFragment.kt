@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.scanner_api.R
 import com.example.scanner_impl.di.ScannerFeatureComponentHolder
 import com.example.scanner_impl.presentation.presenter.ScannerPresenter
@@ -53,5 +54,9 @@ internal class ScannerMainFragment : MvpAppCompatFragment(), ScannerMainView {
 
     override fun showBuySuccess() {
         Toast.makeText(context, R.string.purchase_buy_job_completed, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun navigate(route: Any) {
+        findNavController().navigate(route)
     }
 }

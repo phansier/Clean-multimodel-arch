@@ -1,14 +1,15 @@
 package com.example.eugene_matsyuk.dagger_arch.di.app
 
 import com.example.eugene_matsyuk.dagger_arch.DaggerArchApplication
+import com.example.eugene_matsyuk.dagger_arch.presentation.main.view.MainActivity
 import dagger.Component
-import dagger.internal.Preconditions
 import javax.inject.Singleton
 
-@Component(modules = [GlobalNavigationModule::class, AppModule::class])
+@Component(modules = [AppModule::class])
 @Singleton
 abstract class AppComponent {
     abstract fun inject(daggerArchApplication: DaggerArchApplication)
+    abstract fun inject(mainActivity: MainActivity)
     abstract fun mainScreenComponent(): MainScreenComponent
 
     companion object {

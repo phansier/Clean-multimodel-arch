@@ -12,5 +12,6 @@ buildscript {
         classpath(libs.androidGradle)
         classpath(libs.kotlinGradle)
         classpath(libs.kaptGradle)
+        classpath(libs.kotlinSerialization)
     }
 }

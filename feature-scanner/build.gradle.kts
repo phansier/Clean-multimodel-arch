@@ -1,6 +1,7 @@
 plugins {
     id("android-library-convention")
     id("kotlin-kapt-convention")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 dependencies {
@@ -22,7 +23,8 @@ dependencies {
     implementation(libs.moxyAndroid)
     implementation(libs.moxyKtx)
 
-    implementation(libs.cicerone)
+    implementation(libs.navigation)
+    implementation(libs.kotlin.serialization.json)
 }
 
 android {

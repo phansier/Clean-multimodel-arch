@@ -1,6 +1,7 @@
 plugins {
     id("android-application-convention")
     id("kotlin-kapt-convention")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -26,7 +27,8 @@ dependencies {
     implementation(libs.androidx.constraint)
     implementation(libs.material)
 
-    implementation(libs.cicerone)
+    implementation(libs.navigation)
+    implementation(libs.kotlin.serialization.json)
 
     implementation(libs.dagger)
 

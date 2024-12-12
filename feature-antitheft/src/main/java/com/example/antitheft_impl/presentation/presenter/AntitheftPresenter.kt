@@ -3,19 +3,21 @@ package com.example.antitheft_impl.presentation.presenter
 import android.annotation.SuppressLint
 import com.example.antitheft_impl.domain.AntitheftInteractor
 import com.example.antitheft_impl.presentation.view.AntitheftMainView
-import com.example.antitheft_impl.routing.AntitheftRoutingScreens
+import com.example.antitheft_impl.routing.AntitheftScreenNames
 import com.example.purchase_api.domain.PurchaseInteractor
 import moxy.InjectViewState
 import moxy.MvpPresenter
-import com.github.terrakok.cicerone.Router
+
 import kotlinx.coroutines.launch
 import moxy.presenterScope
 import javax.inject.Inject
 
 @InjectViewState
-internal class AntitheftPresenter @Inject constructor(private val antitheftInteractor: AntitheftInteractor,
-                                                      private val purchaseInteractor: PurchaseInteractor,
-                                                      private val router: Router) : MvpPresenter<AntitheftMainView>() {
+internal class AntitheftPresenter
+@Inject constructor(
+    private val antitheftInteractor: AntitheftInteractor,
+    private val purchaseInteractor: PurchaseInteractor,
+) : MvpPresenter<AntitheftMainView>() {
     @SuppressLint("CheckResult")
     fun clickToAtWork() {
         presenterScope.launch {
@@ -35,6 +37,6 @@ internal class AntitheftPresenter @Inject constructor(private val antitheftInter
     }
 
     fun clickToHelp() {
-        router.navigateTo(AntitheftRoutingScreens.getAntitheftHelpScreen())
+        viewState.navigate(AntitheftScreenNames.AntitheftHelpScreen)
     }
 }

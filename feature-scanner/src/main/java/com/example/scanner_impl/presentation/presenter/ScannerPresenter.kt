@@ -4,18 +4,20 @@ import android.annotation.SuppressLint
 import com.example.purchase_api.domain.PurchaseInteractor
 import com.example.scanner_impl.domain.ScannerInteractor
 import com.example.scanner_impl.presentation.view.ScannerMainView
-import com.example.scanner_impl.routing.ScannerRoutingScreens.getScannerHelpScreen
+import com.example.scanner_impl.routing.ScannerScreenNames
 import moxy.InjectViewState
 import moxy.MvpPresenter
-import com.github.terrakok.cicerone.Router
+
 import kotlinx.coroutines.launch
 import moxy.presenterScope
 import javax.inject.Inject
 
 @InjectViewState
-internal class ScannerPresenter @Inject constructor(private val scannerInteractor: ScannerInteractor,
-                                                    private val purchaseInteractor: PurchaseInteractor,
-                                                    private val router: Router) : MvpPresenter<ScannerMainView>() {
+internal class ScannerPresenter
+@Inject constructor(
+    private val scannerInteractor: ScannerInteractor,
+    private val purchaseInteractor: PurchaseInteractor,
+) : MvpPresenter<ScannerMainView>() {
     @SuppressLint("CheckResult")
     fun clickToScannerWork() {
         presenterScope.launch {
@@ -35,6 +37,6 @@ internal class ScannerPresenter @Inject constructor(private val scannerInteracto
     }
 
     fun clickToHelp() {
-        router.navigateTo(getScannerHelpScreen())
+        viewState.navigate(ScannerScreenNames.ScannerHelpScreen)
     }
 }

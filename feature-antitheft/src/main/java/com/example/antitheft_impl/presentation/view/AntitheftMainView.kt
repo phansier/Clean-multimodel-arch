@@ -13,4 +13,6 @@ internal interface AntitheftMainView : MvpView {
     fun showBuyWork()
 
     fun showBuySuccess()
+
+    fun navigate(route: Any)
 }

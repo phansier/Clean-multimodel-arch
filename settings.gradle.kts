@@ -15,16 +15,13 @@ include(":core-utils")
 include(":module-injector")
 
 pluginManagement {
-
     repositories {
         google()
         mavenCentral()
-        maven("https://plugins.gradle.org/m2/")//for kapt plugin 1.5.30
     }
 }
 
 dependencyResolutionManagement {
-
     repositories {
         google()
         mavenCentral()

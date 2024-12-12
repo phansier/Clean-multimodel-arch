@@ -1,6 +1,6 @@
 allprojects {
     val minSdkVersion by extra(21)
-    val compileSdkVersion by extra(30)
+    val compileSdkVersion by extra(35)
 }
 
 buildscript {

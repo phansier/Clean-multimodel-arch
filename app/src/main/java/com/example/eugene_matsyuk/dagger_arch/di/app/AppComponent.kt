@@ -16,8 +16,9 @@ abstract class AppComponent {
         private var instance: AppComponent? = null
 
         fun get(): AppComponent {
-            return Preconditions.checkNotNull(instance,
-                    "AppComponent is not initialized yet. Call init first.")!!
+            return requireNotNull(instance) {
+                "AppComponent is not initialized yet. Call init first."
+            }
         }
 
         fun init(component: AppComponent) {
